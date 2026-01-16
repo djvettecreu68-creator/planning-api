@@ -11,7 +11,9 @@ module.exports = async (req, res) => {
   }
   
   try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${annee}`;
+    // Récupérer uniquement la plage C36:BR227
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${annee}&range=C36:BR227`;
+    
     const response = await axios.get(url);
     
     res.setHeader('Content-Type', 'text/csv');
